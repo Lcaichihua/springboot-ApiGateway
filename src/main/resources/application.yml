@@ -1,0 +1,36 @@
+server:
+   port: 8009
+
+eureka:
+  client:
+    #registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+  
+  
+spring:
+  application:
+    name: servicio-zuul-server
+zuul:
+  host:
+    connect-timeout-millis: 200000
+    socket-timeout-millis: 100000
+  routes:         
+    bank:
+      path: /productbank/**
+      service-id: product_bank
+    credit:
+      path: /productcredito/**
+      service-id: product_credit
+    client:
+      path: /client/**
+      service-id: client
+    acccountbank :
+      path: /accountbank/**
+      service-id: account_bank
+    acccountcredit :
+      path: /accountcredit/**
+      service-id: account_credit
+    
